@@ -7,7 +7,7 @@ function App() {
   const [email, setEmail] = useState("");
   const [string, setString] = useState("");
   const [loading, setLoading] = useState(false);
-  const BACKEND_URL = "";
+  const BACKEND_URL = "https://oneeleventest.vercel.app/";
   async function testEndPoint() {
     try {
       if (endPoint === "" || email === "") {
@@ -16,16 +16,18 @@ function App() {
       }
       setLoading(true);
 
-      const res = await fetch(`${BACKEND_URL}/api`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ endPoint, email }),
-      });
+      const res = await fetch(
+        `${endPoint}?url=${BACKEND_URL}/api&email=${email}`,
+        {
+          method: "GET",
+        }
+      );
       const data = await res.json();
 
       if (res.ok) {
-        setString(data.word);
+        setString(data.message);
       } else {
+        setString("No result found!");
       }
       setLoading(false);
     } catch (err) {
@@ -37,7 +39,7 @@ function App() {
   return (
     <>
       <div className="App">
-        <form className="form">
+        <div className="form">
           <h2>Endpoint testing form</h2>
           <div className="line">
             <label htmlFor="endpoint">Endpoint</label>
@@ -67,7 +69,7 @@ function App() {
               {loading ? "Loading..." : "Submit"}
             </button>
           </div>
-        </form>
+        </div>
         <div>
           {string !== "" && <div className="result">Result: {string}</div>}
         </div>
