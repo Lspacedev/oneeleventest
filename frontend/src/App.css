@@ -5,6 +5,35 @@
   text-align: center;
 }
 
+.form {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 15px 25px;
+}
+.line {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0px;
+}
+.line label {
+  text-align: start;
+  padding: 0px;
+}
+
+.line input {
+  padding: 5px 15px;
+}
+
+button {
+  width: 100%;
+  padding: 5px 15px;
+  background-color: rgb(121, 121, 134);
+  border: none;
+  color: white;
+}
+button:hover {
+  background-color: rgb(97, 97, 107);
+}
 .logo {
   height: 6em;
   padding: 1.5em;
